@@ -9,7 +9,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+<script>window.onerror=function(m,u,l){var d=document.createElement("div");d.style.cssText="position:fixed;top:0;left:0;right:0;z-index:99;background:#b3261e;color:#fff;padding:10px;font:12px sans-serif";d.textContent="Error: "+m+" (line "+l+")";var a=function(){document.body.appendChild(d)};if(document.body)a();else document.addEventListener("DOMContentLoaded",a)}</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
 <style>
 :root{--bg:#fbf8ff;--card:#fff;--ink:#2b2340;--mute:#6b6089;--line:#e8def8;--cell:#f4eefd;--lav:#e6d6fb;--viol:#a98bf0;--deep:#7a58dd;--pink:#ffc9f3;--pk2:#f48ad2;--today:#fff0fb;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -207,8 +208,8 @@ html[data-skin] .cd.sel{outline-color:var(--ink)}
 var K='habit-tracker-v1',DEF=['Wake up at 6:00 AM ⏰','2L of water 💧','Workout 🏋️','Healthy breakfast 🍳','Project work 🎯','Reading time 📖','Walk outside 🚶','No junk food 🥦','Meditation 🧘','Journaling ✍️'];
 var S=null;
 try{S=JSON.parse(localStorage.getItem(K))}catch(e){}
-if(!S||!S.habits){S={habits:DEF.map(function(n,i){return{id:'h'+i,name:n}}),log:{},n:DEF.length}}
-if(!S.start)S.start='2026-10-22';
+if(!S||!Array.isArray(S.habits)){S={habits:DEF.map(function(n,i){return{id:'h'+i,name:n}}),log:{},n:DEF.length}}
+if(!S.log||typeof S.log!='object')S.log={};if(!S.start)S.start='2026-10-22';
 function save(){try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
 var now=new Date(),Y=now.getFullYear(),M=now.getMonth(),edit=false;
 var MN=['January','February','March','April','May','June','July','August','September','October','November','December'],WD=['S','M','T','W','T','F','S'];
